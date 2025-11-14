@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Toast from "./components/Toast";
 
 // interfaces
 interface SelectedPages {
@@ -9,6 +10,12 @@ interface SelectedPages {
 	page4: boolean;
 }
 
+interface ToastProps {
+	type: "success" | "error" | "";
+	show: boolean;
+	message: string;
+}
+
 function App() {
 	// states
 	const [selectedPages, setSelectedPages] = useState<SelectedPages>({
@@ -17,6 +24,12 @@ function App() {
 		page2: false,
 		page3: false,
 		page4: false,
+	});
+
+	const [toast, setToast] = useState<ToastProps>({
+		type: "",
+		show: false,
+		message: "",
 	});
 
 	// handle all pages checkbox change
@@ -58,10 +71,30 @@ function App() {
 			.map(([key]) => key);
 
 		console.log("selected pages:", selected);
+		if (selected.length === 0) {
+			setToast({
+				type: "error",
+				show: true,
+				message: "No Pages Selected!",
+			});
+		} else {
+			setToast({
+				type: "success",
+				show: true,
+				message: `Selected Pages: ${selected.join(", ")}`,
+			});
+		}
+
+		// hide toast after 3 seconds
+		setTimeout(() => {
+			setToast((prev) => ({ ...prev, show: false }));
+		}, 8000);
 	};
 
 	return (
 		<>
+			{toast.show && <Toast type={toast.type} message={toast.message} />}
+
 			<div className="container">
 				<div className="card">
 					<div className="page-list">

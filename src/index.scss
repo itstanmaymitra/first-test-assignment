@@ -140,3 +140,32 @@ body {
 		background-color: #cdcdcd;
 	}
 }
+
+.toast {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	bottom: 5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	color: #fff;
+	padding: 1rem 2rem;
+	border-radius: 4px;
+	font-size: 1.5rem;
+	letter-spacing: 1.5px;
+
+	& .icon {
+		height: 2.4rem;
+		width: 2.4rem;
+	}
+}
+
+.success {
+	background-color: #4bb543;
+}
+
+.error {
+	background-color: #ff3333;
+}
