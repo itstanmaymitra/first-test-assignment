@@ -11,3 +11,10 @@ https://github.com/itstanmaymitra/first-test-assignment
 ```
 https://first-test-assignment-dun.vercel.app/
 ```
+
+### Version history
+
+-   **v-1.0.1**
+    > Title and Readme updated
+-   **v-1.0.0**
+    > First Commit
